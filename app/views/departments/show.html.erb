@@ -24,6 +24,48 @@
   </table>
 <% end %>
 
+<% if @department.teachers.any? %>
+  <h3>List of Teachers:</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Specialization</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @department.teachers.each do |teacher| %>
+        <tr>
+          <td><%= teacher.name %></td>
+          <td><%= teacher.email %></td>
+          <td><%= teacher.specialization %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>   
+
+<% if @department.laboratories.any? %>
+  <h3>List of Laboratories:</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @department.laboratories.each do |laboratory| %>
+        <tr>
+          <td><%= laboratory.name %></td>
+          <td><%= laboratory.location %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
 <div>
   <%= link_to "Edit this department", edit_department_path(@department) %> |
   <%= link_to "Back to departments", departments_path %>
