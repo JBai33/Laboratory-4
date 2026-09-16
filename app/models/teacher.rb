@@ -1,5 +1,5 @@
 class Teacher < ApplicationRecord
-  belongs_to :department
+  belongs_to :department, counter_cache: true
   has_many :subjects, dependent: :destroy
 
   after_update :recalculate_monthly_salary!, if: :saved_change_to_unit_per_rate?
