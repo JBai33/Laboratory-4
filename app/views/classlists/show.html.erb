@@ -1,10 +1,227 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, "Class List" %>
 
-<%= render @classlist %>
+<% if notice.present? %>
+  <div class="alert alert-success"><%= notice %></div>
+<% end %>
 
-<div>
-  <%= link_to "Edit this classlist", edit_classlist_path(@classlist) %> |
-  <%= link_to "Back to classlists", classlists_path %>
+<% if alert.present? %>
+  <div class="alert alert-danger"><%= alert %></div>
+<% end %>
 
-  <%= button_to "Destroy this classlist", @classlist, method: :delete %>
+<div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-4">
+
+  <div>
+    <h1 class="mb-1">
+      Class List
+    </h1>
+
+    <p class="text-muted mb-0">
+      <%= @classlist.student.name %> &middot;
+      <%= @classlist.section.subject.name %>
+    </p>
+  </div>
+
+  <div class="d-flex flex-wrap gap-2">
+
+    <%= link_to "Edit",
+                edit_classlist_path(@classlist),
+                class: "btn btn-secondary" %>
+
+    <%= link_to "Back to Class Lists",
+                classlists_path,
+                class: "btn btn-outline-secondary" %>
+
+    <%= button_to "Delete",
+                  @classlist,
+                  method: :delete,
+                  class: "btn btn-danger" %>
+
+  </div>
+
+</div>
+
+
+<!-- Class List Details -->
+
+<div class="row g-3 mb-4">
+
+  <div class="col-md-6">
+
+    <div class="card h-100">
+
+      <div class="card-header">
+        Enrollment Details
+      </div>
+
+      <div class="card-body">
+
+        <div class="row mb-2">
+
+          <div class="col-5 text-muted">
+            Student
+          </div>
+
+          <div class="col-7 fw-bold">
+            <%= @classlist.student.name %>
+          </div>
+
+        </div>
+
+
+        <div class="row mb-2">
+
+          <div class="col-5 text-muted">
+            Program
+          </div>
+
+          <div class="col-7">
+            <%= @classlist.student.program %>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="col-5 text-muted">
+            Year Level
+          </div>
+
+          <div class="col-7">
+            <%= @classlist.student.year_level %>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="col-md-6">
+
+    <div class="card h-100">
+
+      <div class="card-header">
+        Class Details
+      </div>
+
+      <div class="card-body">
+
+        <div class="row mb-2">
+
+          <div class="col-5 text-muted">
+            Subject
+          </div>
+
+          <div class="col-7 fw-bold">
+            <%= @classlist.section.subject.name %>
+          </div>
+
+        </div>
+
+
+        <div class="row mb-2">
+
+          <div class="col-5 text-muted">
+            Section
+          </div>
+
+          <div class="col-7">
+            <%= @classlist.section.name %>
+          </div>
+
+        </div>
+
+
+        <div class="row mb-2">
+
+          <div class="col-5 text-muted">
+            Room
+          </div>
+
+          <div class="col-7">
+            <%= @classlist.section.room %>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="col-5 text-muted">
+            Timeslot
+          </div>
+
+          <div class="col-7">
+            <%= @classlist.section.timeslot %>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- Subject Information -->
+
+<div class="card mb-4">
+
+  <div class="card-header">
+    Subject Information
+  </div>
+
+  <div class="card-body">
+
+    <div class="row text-center">
+
+      <div class="col">
+
+        <div class="fs-3 fw-bold">
+          <%= @classlist.section.subject.number_of_units %>
+        </div>
+
+        <div class="small text-muted">
+          Units
+        </div>
+
+      </div>
+
+
+      <div class="col border-start">
+
+        <div class="fs-3 fw-bold">
+          <%= @classlist.section.subject.teacher.name %>
+        </div>
+
+        <div class="small text-muted">
+          Teacher
+        </div>
+
+      </div>
+
+
+      <div class="col border-start">
+
+        <div class="fs-3 fw-bold">
+          <%= @classlist.section.student_count %>
+        </div>
+
+        <div class="small text-muted">
+          Section Students
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </div>

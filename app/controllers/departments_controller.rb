@@ -67,4 +67,4 @@ class DepartmentsController < ApplicationController
     def department_params
       params.expect(department: [ :name, :location, :students_count, :teachers_count, :laboratories_count])
     end
-end
+  end
