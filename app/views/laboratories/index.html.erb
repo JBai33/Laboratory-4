@@ -1,16 +1,49 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Laboratories" %>
+
+<% if notice.present? %>
+  <div class="alert alert-success"><%= notice %></div>
+<% end %>
 
 <h1>Laboratories</h1>
 
-<div id="laboratories">
-  <% @laboratories.each do |laboratory| %>
-    <%= render laboratory %>
-    <p>
-      <%= link_to "Show this laboratory", laboratory %>
-    </p>
-  <% end %>
+<div id="laboratories" class="table-responsive">
+  <table class="table table-striped table-hover table-bordered align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Department</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @laboratories.each do |laboratory| %>
+        <tr id="<%= dom_id laboratory %>">
+          <td><%= laboratory.name %></td>
+          <td><%= laboratory.location %></td>
+          <td><%= laboratory.department.name %></td>
+
+          <td class="text-nowrap">
+            <%= button_to "Show", laboratory,
+                          method: :get,
+                          class: "btn btn-sm btn-primary",
+                          form_class: "d-inline-block" %>
+
+            <%= button_to "Edit", edit_laboratory_path(laboratory),
+                          method: :get,
+                          class: "btn btn-sm btn-secondary",
+                          form_class: "d-inline-block" %>
+
+            <%= button_to "Delete", laboratory,
+                          method: :delete,
+                          class: "btn btn-sm btn-danger",
+                          form_class: "d-inline-block" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to "New laboratory", new_laboratory_path %>
+<%= link_to "New laboratory", new_laboratory_path, class: "btn btn-success" %>

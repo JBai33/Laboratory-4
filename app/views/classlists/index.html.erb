@@ -1,16 +1,82 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, "Class Lists" %>
 
-<% content_for :title, "Classlists" %>
+<% if notice.present? %>
+  <div class="alert alert-success"><%= notice %></div>
+<% end %>
 
-<h1>Classlists</h1>
+<h1>Class Lists</h1>
 
-<div id="classlists">
-  <% @classlists.each do |classlist| %>
-    <%= render classlist %>
-    <p>
-      <%= link_to "Show this classlist", classlist %>
-    </p>
-  <% end %>
+<div id="classlists" class="table-responsive">
+  <table class="table table-striped table-hover table-bordered align-middle">
+
+    <thead class="table-dark">
+      <tr>
+        <th>Student</th>
+        <th>Subject</th>
+        <th>Section</th>
+        <th>Room</th>
+        <th>Timeslot</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <% @classlists.each do |classlist| %>
+
+        <tr id="<%= dom_id classlist %>">
+
+          <td>
+            <%= classlist.student.name %>
+          </td>
+
+          <td>
+            <%= classlist.section.subject.name %>
+          </td>
+
+          <td>
+            <%= classlist.section.name %>
+          </td>
+
+          <td>
+            <%= classlist.section.room %>
+          </td>
+
+          <td>
+            <%= classlist.section.timeslot %>
+          </td>
+
+          <td class="text-nowrap">
+
+            <%= button_to "Show",
+                          classlist,
+                          method: :get,
+                          class: "btn btn-sm btn-primary",
+                          form_class: "d-inline-block" %>
+
+            <%= button_to "Edit",
+                          edit_classlist_path(classlist),
+                          method: :get,
+                          class: "btn btn-sm btn-secondary",
+                          form_class: "d-inline-block" %>
+
+            <%= button_to "Delete",
+                          classlist,
+                          method: :delete,
+                          class: "btn btn-sm btn-danger",
+                          form_class: "d-inline-block" %>
+
+          </td>
+
+        </tr>
+
+      <% end %>
+
+    </tbody>
+
+  </table>
 </div>
 
-<%= link_to "New classlist", new_classlist_path %>
+<%= link_to "New class list",
+            new_classlist_path,
+            class: "btn btn-success" %>

@@ -8,3 +8,150 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ /* General page */
+/* =========================
+   General Page
+   ========================= */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+}
+
+h1 {
+  color: #1f3c88;
+}
+
+h2 {
+  color: #1f3c88;
+}
+
+
+/* =========================
+   Page Header
+   ========================= */
+
+.page-header {
+  max-width: 1100px;
+  margin: 40px auto 25px;
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 36px;
+}
+
+.page-header p {
+  color: #666;
+}
+
+
+/* =========================
+   Department Cards
+   ========================= */
+
+.department-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.department-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  transition: 0.2s;
+}
+
+.department-card:hover {
+  transform: translateY(-4px);
+}
+
+.department-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.department-info h2 {
+  margin: 0 0 8px;
+}
+
+.department-info p {
+  color: #666;
+}
+
+
+/* =========================
+   Buttons
+   ========================= */
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+
+  border-radius: 7px;
+
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: #1f3c88;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #e8eefc;
+  color: #1f3c88;
+}
+
+.btn-edit {
+  background-color: #eeeeee;
+  color: #333;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+
+/* =========================
+   Forms
+   ========================= */
+
+input,
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #1f3c88;
+}

@@ -1,33 +1,247 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, @section.name %>
 
-<%= render @section %>
-
-<% if @section.classlists.any? %>
-  <h3>List of Students:</h3>
-  <table>
-    <thead> 
-      <tr>
-        <th>Name</th>
-        <th>Year Level</th>
-        <th>Program</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <% @section.classlists.each do |classlist| %>
-        <tr>
-          <td><%= classlist.student.name %></td>
-          <td><%= classlist.student.year_level %></td>
-          <td><%= classlist.student.program %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<% if notice.present? %>
+  <div class="alert alert-success"><%= notice %></div>
 <% end %>
 
-<div>
-  <%= link_to "Edit this section", edit_section_path(@section) %> |
-  <%= link_to "Back to sections", sections_path %>
+<% if alert.present? %>
+  <div class="alert alert-danger"><%= alert %></div>
+<% end %>
 
-  <%= button_to "Destroy this section", @section, method: :delete %>
+<div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-4">
+
+  <div>
+    <h1 class="mb-1">
+      <%= @section.name %>
+    </h1>
+
+    <p class="text-muted mb-0">
+      <%= @section.subject.name %> &middot;
+      <%= @section.room %>
+    </p>
+  </div>
+
+  <div class="d-flex flex-wrap gap-2">
+
+    <%= link_to "Edit",
+                edit_section_path(@section),
+                class: "btn btn-secondary" %>
+
+    <%= link_to "Back to Sections",
+                sections_path,
+                class: "btn btn-outline-secondary" %>
+
+    <%= button_to "Delete",
+                  @section,
+                  method: :delete,
+                  class: "btn btn-danger" %>
+
+  </div>
+</div>
+
+
+<!-- Section Details and Summary -->
+
+<div class="row g-3 mb-4">
+
+  <!-- Section Details -->
+
+  <div class="col-md-6">
+
+    <div class="card h-100">
+
+      <div class="card-header">
+        Section Details
+      </div>
+
+      <div class="card-body">
+
+        <div class="row mb-2">
+
+          <div class="col-5 text-muted">
+            Section
+          </div>
+
+          <div class="col-7 fw-bold">
+            <%= @section.name %>
+          </div>
+
+        </div>
+
+
+        <div class="row mb-2">
+
+          <div class="col-5 text-muted">
+            Subject
+          </div>
+
+          <div class="col-7">
+            <%= @section.subject.name %>
+          </div>
+
+        </div>
+
+
+        <div class="row mb-2">
+
+          <div class="col-5 text-muted">
+            Room
+          </div>
+
+          <div class="col-7">
+            <%= @section.room %>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="col-5 text-muted">
+            Timeslot
+          </div>
+
+          <div class="col-7">
+            <%= @section.timeslot %>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Section Summary -->
+
+  <div class="col-md-6">
+
+    <div class="card h-100">
+
+      <div class="card-header">
+        Section Summary
+      </div>
+
+      <div class="card-body">
+
+        <div class="row text-center">
+
+          <div class="col">
+
+            <div class="fs-3 fw-bold">
+              <%= @section.student_count %>
+            </div>
+
+            <div class="small text-muted">
+              Students
+            </div>
+
+          </div>
+
+
+          <div class="col border-start">
+
+            <div class="fs-3 fw-bold">
+              <%= @section.subject.number_of_units %>
+            </div>
+
+            <div class="small text-muted">
+              Units
+            </div>
+
+          </div>
+
+
+          <div class="col border-start">
+
+            <div class="fs-3 fw-bold">
+              <%= @section.room %>
+            </div>
+
+            <div class="small text-muted">
+              Room
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- Enrolled Students -->
+
+<div class="card mb-4">
+
+  <div class="card-header d-flex justify-content-between align-items-center">
+
+    <span>Enrolled Students</span>
+
+    <span class="badge text-bg-secondary">
+      <%= @section.classlists.size %>
+    </span>
+
+  </div>
+
+
+  <% if @section.classlists.any? %>
+
+    <div class="table-responsive">
+
+      <table class="table table-striped table-hover align-middle mb-0">
+
+        <thead>
+
+          <tr>
+            <th>Name</th>
+            <th>Program</th>
+            <th>Year Level</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <% @section.classlists.each do |classlist| %>
+
+            <tr>
+
+              <td>
+                <%= classlist.student.name %>
+              </td>
+
+              <td>
+                <%= classlist.student.program %>
+              </td>
+
+              <td>
+                <%= classlist.student.year_level %>
+              </td>
+
+            </tr>
+
+          <% end %>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  <% else %>
+
+    <div class="card-body text-muted">
+      No students are enrolled in this section yet.
+    </div>
+
+  <% end %>
+
 </div>
