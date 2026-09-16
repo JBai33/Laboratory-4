@@ -65,6 +65,6 @@ class DepartmentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def department_params
-      params.expect(department: [ :name, :location, :students_count, :teachers_count, :laboratories_count])
+      params.expect(department: [ :name, :location, :students_count, :teachers_count, :laboratories_count ])
     end
-  end
+end
