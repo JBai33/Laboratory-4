@@ -19,4 +19,14 @@
     <%= teacher.department.name %>
   </div>
 
+  <div>
+    <strong>Monthly Salary:</strong>
+    <%= number_to_currency(teacher.monthly_salary) %>
+  </div>
+
+  <div>
+    <strong>Unit per Rate:</strong>
+    <%= number_to_currency(teacher.unit_per_rate) %>
+  </div>
+
 </div>

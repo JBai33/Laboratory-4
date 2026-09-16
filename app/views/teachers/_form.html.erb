@@ -36,6 +36,16 @@
   </div>
 
   <div>
+    <%= form.label :monthly_salary, style: "display: block" %>
+    <%= form.number_field :monthly_salary, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= form.label :unit_per_rate, style: "display: block" %>
+    <%= form.number_field :unit_per_rate, step: 0.01 %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
