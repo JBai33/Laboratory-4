@@ -4,8 +4,14 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+  name: GO21
+  room: D414
+  timeslot: 8:00 - 11:00 AM
+  subject: one
+
+two:
+  name: GO11
+  room: D317
+  timeslot: 10:00 - 12:00 PM
+  subject: two

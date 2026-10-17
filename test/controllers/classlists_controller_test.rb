@@ -15,13 +15,18 @@ class ClasslistsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create classlist" do
-    assert_difference("Classlist.count") do
-      post classlists_url, params: { classlist: { student_id: @classlist.student_id, subject_id: @classlist.subject_id } }
-    end
-
-    assert_redirected_to classlist_url(Classlist.last)
+ test "should create classlist" do
+  assert_difference("Classlist.count") do
+    post classlists_url, params: {
+      classlist: {
+        student_id: @classlist.student_id,
+        section_id: @classlist.section_id
+      }
+    }
   end
+
+  assert_redirected_to classlist_url(Classlist.last)
+end
 
   test "should show classlist" do
     get classlist_url(@classlist)
@@ -32,11 +37,16 @@ class ClasslistsControllerTest < ActionDispatch::IntegrationTest
     get edit_classlist_url(@classlist)
     assert_response :success
   end
+test "should update classlist" do
+  patch classlist_url(@classlist), params: {
+    classlist: {
+      student_id: @classlist.student_id,
+      section_id: @classlist.section_id
+    }
+  }
 
-  test "should update classlist" do
-    patch classlist_url(@classlist), params: { classlist: { student_id: @classlist.student_id, subject_id: @classlist.subject_id } }
-    assert_redirected_to classlist_url(@classlist)
-  end
+  assert_redirected_to classlist_url(@classlist)
+end
 
   test "should destroy classlist" do
     assert_difference("Classlist.count", -1) do
