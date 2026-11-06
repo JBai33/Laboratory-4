@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Department Student Application" %></title>
+    <title><%= content_for(:title) || "MyLarper" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Department Student Application">
+    <meta name="application-name" content="MyLarper">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -48,8 +48,16 @@
                   data-bs-dismiss="offcanvas" data-bs-target="#sidebar"></button>
         </div>
 
-        <div class="offcanvas-body flex-column p-3">
-          <h5 class="d-none d-md-block mb-3">Department Student App</h5>
+<div class="offcanvas-body flex-column p-3">
+
+  <!-- Profile Section -->
+  <div class="text-center mb-4">
+    <%= image_tag "logo2.png", alt: "MyLarper Logo",
+        style: "width: 100px; height: 100px; object-fit: cover; border: 3px solid white;" %>
+
+    <h5 class="text-white mb-1">MyLarper</h5>
+    <small class="text-white-50">Department Student Application</small>
+  </div>
 
           <%# nav-pills + flex-column stacks the links vertically. %>
           <ul class="nav nav-pills flex-column gap-1">
