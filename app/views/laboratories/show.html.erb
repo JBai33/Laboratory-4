@@ -126,3 +126,19 @@
     </div>
   </div>
 </div>
+
+<div class="card mt-4">
+  <div class="card-header">
+    Laboratory QR Code
+  </div>
+
+  <div class="card-body text-center">
+    <p class="text-muted">
+      Scan this QR code to access this laboratory's information.
+    </p>
+
+    <%= raw RQRCode::QRCode.new(laboratory_url(@laboratory))
+          .as_svg(module_size: 5, viewbox: true, use_path: true)
+          .sub("<svg ", '<svg width="180" height="180" ') %>
+  </div>
+</div>
