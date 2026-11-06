@@ -2,21 +2,19 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch("DB_USERNAME") { "root" } %>
-  password: <%= ENV.fetch("DB_PASSWORD") { "password" } %>
+  username: <%= ENV.fetch("DB_USERNAME") { "rails" } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { "rails123" } %>
   host: <%= ENV.fetch("DB_HOST") { "127.0.0.1" } %>
 
 development:
   <<: *default
   database: department_student_application_development
-  username: rails
-  password: "rails123"
+
 
 test:
   <<: *default
   database: department_student_application_test
-  username: rails
-  password: "rails123"
+
 
 production:
   primary: &primary_production
