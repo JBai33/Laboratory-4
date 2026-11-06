@@ -3,7 +3,7 @@ class ClasslistsController < ApplicationController
 
   # GET /classlists or /classlists.json
   def index
-    @classlists = Classlist.all
+    @pagy, @classlists = pagy(:offset, Classlist.all)
   end
 
   # GET /classlists/1 or /classlists/1.json

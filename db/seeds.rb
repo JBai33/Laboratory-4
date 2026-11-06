@@ -7,3 +7,13 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+cols = Student.column_names
+
+department = Department.first || Department.create!(name: "Computer Science")
+
+50.times do |i|
+  attrs = {}
+  attrs[:name]          = "Student #{i + 1}"          if cols.include?("name")
+  attrs[:department_id] = department.id               if cols.include?("department_id")
+  Student.create!(attrs)
+end

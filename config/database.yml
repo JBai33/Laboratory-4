@@ -9,10 +9,14 @@ default: &default
 development:
   <<: *default
   database: department_student_application_development
+  username: rails
+  password: "rails123"
 
 test:
   <<: *default
   database: department_student_application_test
+  username: rails
+  password: "rails123"
 
 production:
   primary: &primary_production

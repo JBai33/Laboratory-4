@@ -1,0 +1,1 @@
+Pagy.options[:limit] = 10   # items per page
