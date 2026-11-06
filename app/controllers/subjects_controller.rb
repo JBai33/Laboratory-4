@@ -2,9 +2,10 @@ class SubjectsController < ApplicationController
   before_action :set_subject, only: %i[ show edit update destroy ]
 
   # GET /subjects or /subjects.json
-  def index
-    @pagy, @subjects = pagy(:offset, Subject.all)
-  end
+def index
+  @q = Subject.ransack(params[:q])
+  @pagy, @subjects = pagy(:offset, @q.result, limit: 10)
+end
 
   # GET /subjects/1 or /subjects/1.json
   def show

@@ -2,9 +2,10 @@ class DepartmentsController < ApplicationController
   before_action :set_department, only: %i[ show edit update destroy ]
 
   # GET /departments or /departments.json
-  def index
-    @pagy, @departments = pagy(:offset, Department.all)
-  end
+ def index
+  @q = Department.ransack(params[:q])
+  @pagy, @departments = pagy(:offset, @q.result, limit: 10)
+end
 
   # GET /departments/1 or /departments/1.json
   def show

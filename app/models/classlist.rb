@@ -6,6 +6,14 @@ class Classlist < ApplicationRecord
   after_destroy :student_dropped
   after_update :enrollment_was_edited
 
+  def self.ransackable_attributes(_auth_object = nil)
+  []
+end
+
+  def self.ransackable_associations(_auth_object = nil)
+  %w[section student]
+end
+
   private
     def subject
       section.subject

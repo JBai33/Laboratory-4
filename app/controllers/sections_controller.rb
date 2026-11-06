@@ -2,9 +2,10 @@ class SectionsController < ApplicationController
   before_action :set_section, only: %i[ show edit update destroy ]
 
   # GET /sections or /sections.json
-  def index
-    @pagy, @sections = pagy(:offset, Section.all)
-  end
+def index
+  @q = Section.ransack(params[:q])
+  @pagy, @sections = pagy(:offset, @q.result, limit: 10)
+end
 
   # GET /sections/1 or /sections/1.json
   def show

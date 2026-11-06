@@ -66,3 +66,4 @@ group :test do
 end
 
 gem "pagy", "~> 43.8"
+gem "ransack" 

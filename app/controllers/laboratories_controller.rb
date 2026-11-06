@@ -2,9 +2,10 @@ class LaboratoriesController < ApplicationController
   before_action :set_laboratory, only: %i[ show edit update destroy ]
 
   # GET /laboratories or /laboratories.json
-  def index
-    @pagy, @laboratories = pagy(:offset, Laboratory.all)
-  end
+def index
+  @q = Laboratory.ransack(params[:q])
+  @pagy, @laboratories = pagy(:offset, @q.result, limit: 10)
+end
 
   # GET /laboratories/1 or /laboratories/1.json
   def show

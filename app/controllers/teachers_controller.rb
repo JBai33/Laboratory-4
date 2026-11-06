@@ -2,9 +2,10 @@ class TeachersController < ApplicationController
   before_action :set_teacher, only: %i[ show edit update destroy ]
 
   # GET /teachers or /teachers.json
-  def index
-    @pagy, @teachers = pagy(:offset, Teacher.all)
-  end
+def index
+  @q = Teacher.ransack(params[:q])
+  @pagy, @teachers = pagy(:offset, @q.result, limit: 10)
+end
 
   # GET /teachers/1 or /teachers/1.json
   def show

@@ -6,6 +6,14 @@ class Subject < ApplicationRecord
   after_destroy :recalculate_teacher_salary
   after_update :recalculate_salary_after_update
 
+  def self.ransackable_attributes(_auth_object = nil)
+  %w[name number_of_units]
+end
+
+  def self.ransackable_associations(_auth_object = nil)
+  %w[teacher sections]
+end
+
   private
 
   def recalculate_teacher_salary
