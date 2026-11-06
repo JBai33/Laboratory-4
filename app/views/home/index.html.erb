@@ -205,3 +205,55 @@
 
 </div>
 
+<!-- CHARTS DASHBOARD -->
+
+<h2 class="fw-bold mt-5 mb-4">
+  Student Analytics
+</h2>
+
+<div class="row g-4">
+
+  <!-- STUDENTS PER YEAR LEVEL -->
+
+  <div class="col-lg-6">
+    <div class="card shadow-sm border-0 h-100">
+
+      <div class="card-body">
+
+        <h4 class="card-title mb-4">
+          Students per Year Level
+        </h4>
+
+        <%= column_chart @students_by_year_level,
+            xtitle: "Year Level",
+            ytitle: "Students",
+            height: "350px",
+            colors: ["#4169E1"] %>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- STUDENTS PER DEPARTMENT -->
+
+  <div class="col-lg-6">
+    <div class="card shadow-sm border-0 h-100">
+
+      <div class="card-body">
+
+        <h4 class="card-title mb-4">
+          Students per Department
+        </h4>
+
+        <%= pie_chart @students_by_department,
+            height: "350px",
+            legend: "bottom",
+            colors: ["#4169E1", "#E63916", "#2A9D8F", "#D4AF37"] %>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+

@@ -1,4 +1,5 @@
 class Department < ApplicationRecord
+    has_paper_trail
     has_many :students, dependent: :destroy
     has_many :teachers, dependent: :destroy
     has_many :laboratories, dependent: :destroy

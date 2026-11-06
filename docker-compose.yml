@@ -27,6 +27,7 @@ services:
       DB_HOST: db
       DB_USERNAME: root
       DB_PASSWORD: password
-
+  
 volumes:
   db_data:
+  bundle_data:

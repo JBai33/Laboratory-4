@@ -68,3 +68,5 @@ end
 gem "pagy", "~> 43.8"
 gem "ransack" 
 gem "rqrcode"
+gem "paper_trail"
+gem "chartkick"
