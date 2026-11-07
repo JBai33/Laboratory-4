@@ -1,7 +1,7 @@
 <div style="
   background-image:
     linear-gradient(rgba(10, 25, 70, 0.65), rgba(10, 25, 70, 0.65)),
-    url('<%= asset_path("pillars.jpg") %>');
+    url('<%= asset_path("campus.jpg") %>');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -13,15 +13,23 @@
 <div class="container py-5">
 
   <!-- WELCOME SECTION -->
-  <div class="p-5 mb-5 rounded-4 text-white shadow"
-       style="background: linear-gradient(to bottom, #4169E1, #173591);">
+<div class="p-5 mb-5 rounded-4 text-white shadow"
+     style="
+       background-image:
+         linear-gradient(rgba(10, 25, 70, 0.60), rgba(10, 25, 70, 0.60)),
+         url('<%= asset_path("pillars.jpg") %>');
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+       min-height: 400px;
+     ">
 
     <div class="row align-items-center">
 
       <div class="col-md-7">
 
-        <h1 class="display-2 fw-bold" style="color: #D4AF37; font-family: 'Times New Roman', serif;">
-          Welcome to myAdnu-Larp
+        <h1 class="display-2 fw-bold text-nowrap" style="color: #D4AF37; font-family: 'Times New Roman', serif;">
+          Welcome to myLarper
         </h1>
  
         <h4 class="mt-3" style="font-family: 'Times New Roman', serif;">
@@ -29,11 +37,7 @@
         </h4>
 
         <button class="btn btn-primary">
-  <a href="https://youtu.be/rwAg0klZlAA?list=RDrwAg0klZlAA" target="_blank" class="text-white text-decoration-none">WATCH THIS!!! IMPORTANT</a>
-</button>
-
-<button class="btn btn-primary">
-  <a href="https://youtu.be/t4Z9taGAbZQ?list=RDt4Z9taGAbZQ" target="_blank" class="text-white text-decoration-none">WATCH THIS!!! SUPER IMPORTANT </a>
+  <a href="https://services.adnu.edu.ph/myadnu/" target="_blank" class="text-white text-decoration-none">Click for the real experience</a>
 </button>
 
         <p class="fs-5 mt-4" style="font-family: 'Times New Roman', serif;">
@@ -55,7 +59,7 @@
 
   <!-- DASHBOARD SECTION -->
 
-  <h2 class="fw-bold mb-4" style="color: #FFFFFF; font-family: 'Times New Roman', serif;">
+  <h2 class="fw-bold mb-4" style="color: #D3D3D3; font-family: 'Times New Roman', serif;">
     School Management
   </h2>
 
@@ -64,7 +68,8 @@
     <!-- STUDENTS -->
 
     <div class="col-md-4">
-      <div class="card shadow-sm h-100 border-0">
+      <div class="card shadow-sm h-100"
+     style="background-color: #14213D; color: white; border: 2px solid #D3D3D3;">
 
         <div class="card-body text-center p-4">
 
@@ -87,11 +92,12 @@
     <!-- DEPARTMENTS -->
 
     <div class="col-md-4">
-      <div class="card shadow-sm h-100 border-0">
+      <div class="card shadow-sm h-100"
+     style="background-color: #14213D; color: white; border: 2px solid #D3D3D3;">
 
         <div class="card-body text-center p-4">
 
-          <h3>🏛 ️</h3>
+          <h3>🏛</h3>
 
           <h4 class="card-title">Departments</h4>
 
@@ -110,7 +116,8 @@
     <!-- TEACHERS -->
 
     <div class="col-md-4">
-      <div class="card shadow-sm h-100 border-0">
+      <div class="card shadow-sm h-100"
+     style="background-color: #14213D; color: white; border: 2px solid #D3D3D3;">
 
         <div class="card-body text-center p-4">
 
@@ -133,7 +140,8 @@
     <!-- SUBJECTS -->
 
     <div class="col-md-4">
-      <div class="card shadow-sm h-100 border-0">
+      <div class="card shadow-sm h-100"
+     style="background-color: #14213D; color: white; border: 2px solid #D3D3D3;">
 
         <div class="card-body text-center p-4">
 
@@ -156,7 +164,8 @@
     <!-- SECTIONS -->
 
     <div class="col-md-4">
-      <div class="card shadow-sm h-100 border-0">
+      <div class="card shadow-sm h-100"
+     style="background-color: #14213D; color: white; border: 2px solid #D3D3D3;">
 
         <div class="card-body text-center p-4">
 
@@ -179,7 +188,8 @@
     <!-- CLASS LISTS -->
 
     <div class="col-md-4">
-      <div class="card shadow-sm h-100 border-0">
+      <div class="card shadow-sm h-100"
+     style="background-color: #14213D; color: white; border: 2px solid #D3D3D3;">
 
         <div class="card-body text-center p-4">
 
@@ -202,7 +212,8 @@
     <!-- LABORATORIES -->
 
     <div class="col-md-4">
-      <div class="card shadow-sm h-100 border-0">
+      <div class="card shadow-sm h-100"
+     style="background-color: #14213D; color: white; border: 2px solid #D3D3D3;">
 
         <div class="card-body text-center p-4">
 
@@ -227,7 +238,7 @@
 
 <!-- CHARTS DASHBOARD -->
 
-<h2 class="fw-bold mt-5 mx-4" style="color: #FFFFFF; ">
+<h2 class="fw-bold mt-5 mx-4" style="color: #D3D3D3; ">
   Student Analytics
 </h2>
 
@@ -269,7 +280,7 @@
         <%= pie_chart @students_by_department,
             height: "350px",
             legend: "bottom",
-            colors: ["#4169E1", "#E63916", "#2A9D8F", "#D4AF37"] %>
+            colors: ["#4169E1", "#E63916", "#2A9D8F", "#D3D3D3"] %>
 
       </div>
     </div>
