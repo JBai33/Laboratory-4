@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_06_081525) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_19_101741) do
   create_table "classlists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.bigint "section_id", null: false
     t.bigint "student_id", null: false
     t.datetime "updated_at", null: false
     t.index ["section_id"], name: "index_classlists_on_section_id"
+    t.index ["student_id", "section_id"], name: "index_classlists_on_student_and_section_unique", unique: true
     t.index ["student_id"], name: "index_classlists_on_student_id"
   end
 
@@ -53,7 +54,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_06_081525) do
   create_table "students", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.bigint "department_id", null: false
-    t.string "name"
+    t.string "name", null: false
     t.integer "number_of_units", default: 0
     t.string "program"
     t.integer "subjects_count", default: 0
@@ -61,6 +62,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_06_081525) do
     t.datetime "updated_at", null: false
     t.integer "year_level"
     t.index ["department_id"], name: "index_students_on_department_id"
+    t.check_constraint "`year_level` between 1 and 5", name: "students_year_level_between_1_and_5"
   end
 
   create_table "subjects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -77,13 +79,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_06_081525) do
   create_table "teachers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.bigint "department_id", null: false
-    t.string "email"
+    t.string "email", null: false
     t.float "monthly_salary"
     t.string "name"
     t.string "specialization"
     t.float "unit_per_rate"
     t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_teachers_on_department_id"
+    t.index ["email"], name: "index_teachers_on_email", unique: true
   end
 
   create_table "versions", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
