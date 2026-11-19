@@ -1,4 +1,5 @@
 class TeachersController < ApplicationController
+  before_action :require_admin!, only: %i[ show new create edit update destroy ]
   before_action :set_teacher, only: %i[ show edit update destroy ]
 
   # GET /teachers or /teachers.json

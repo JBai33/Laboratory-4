@@ -1,5 +1,9 @@
 <% content_for :title, "Students" %>
 
+<% if admin? %>
+  <%= link_to "New Student", new_student_path, class: "btn btn-primary" %>
+<% end %>
+
 <% if notice.present? %>
   <div class="alert alert-success"><%= notice %></div>
 <% end %>

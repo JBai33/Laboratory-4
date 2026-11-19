@@ -1,4 +1,5 @@
 class DepartmentsController < ApplicationController
+  before_action :require_admin!, only: %i[ show new create edit update destroy ]
   before_action :set_department, only: %i[ show edit update destroy ]
 
   # GET /departments or /departments.json

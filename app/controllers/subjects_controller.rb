@@ -1,4 +1,5 @@
 class SubjectsController < ApplicationController
+  before_action :require_admin!, only: %i[ show new create edit update destroy ]
   before_action :set_subject, only: %i[ show edit update destroy ]
 
   # GET /subjects or /subjects.json
